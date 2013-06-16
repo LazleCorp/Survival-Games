@@ -339,7 +339,7 @@ public class GameManager {
 			sb.append(p.getName()+",");
 		}
 		sb.append("\n\n");
-		sb.append(ChatColor.RED+  "<---------------------[ Dead: "+players[1].length+" ]---------------------->\n"+ChatColor.GREEN+" ");
+		sb.append(ChatColor.RED+  "<---------------------[ Dead: "+players[1].length+" ]--------------------->\n"+ChatColor.GREEN+" ");
 		for(Player p: players[1]){
 			sb.append(p.getName()+",");
 		}

@@ -318,7 +318,10 @@ public class SettingsManager {
 			return new Location(Bukkit.getWorld(system.getString("sg-system.lobby.spawn.world")),
 				system.getInt("sg-system.lobby.spawn.x"),
 				system.getInt("sg-system.lobby.spawn.y"),
-				system.getInt("sg-system.lobby.spawn.z"));
+				system.getInt("sg-system.lobby.spawn.z"),
+				system.getInt("sg-system.lobby.spawn.yaw"),
+				system.getInt("sg-system.lobby.spawn.pitch") //Finally.
+					);
 		}catch(Exception e){
 			return null;
 		}
@@ -336,6 +339,8 @@ public class SettingsManager {
 		system.set("sg-system.lobby.spawn.x", l.getBlockX());
 		system.set("sg-system.lobby.spawn.y", l.getBlockY());
 		system.set("sg-system.lobby.spawn.z", l.getBlockZ());
+		system.set("sg-system.lobby.spawn.yaw", l.getYaw());
+		system.set("sg-system.lobby.spawn.pitch", l.getPitch());
 	}
 
 

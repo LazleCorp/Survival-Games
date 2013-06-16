@@ -407,7 +407,7 @@ public class Game {
 			for (Player pl: activePlayers) {
 				pl.setHealth(pl.getMaxHealth());
 				//clearInv(pl);
-				msgmgr.sendFMessage(PrefixType.INFO, "game.goodluck", pl);
+				msgmgr.sendFMessage(PrefixType.INFO, "game.goodluck", pl);	
 			}
 			if (config.getBoolean("restock-chest")) {
 				SettingsManager.getGameWorld(gameID).setTime(0);
@@ -429,6 +429,9 @@ public class Game {
 				}, config.getInt("grace-period") * 20);
 			}
 			if(config.getBoolean("deathmatch.enabled")){
+				for (Player tributes: activePlayers) {
+					msgmgr.sendMessage(PrefixType.INFO, "Deathmatch in" + ChatColor.GOLD +  config.getInt("deathmatc.time") * 20 * 60 + " seconds", tributes); //Hopefully the right line
+				}
 				tasks.add(Bukkit.getScheduler().scheduleSyncDelayedTask(GameManager.getInstance().getPlugin(), 
 						new DeathMatch(), config.getInt("deathmatch.time") * 20 * 60));
 			}
@@ -889,6 +892,7 @@ public class Game {
 				for(int a = 0; a < spawns.size(); a++){
 					if(spawns.get(a) == p){
 						p.teleport(SettingsManager.getInstance().getSpawnPoint(gameID, a));
+						p.sendMessage(ChatColor.RED + " Deathmatch Started!"); // I think this is the right one
 						break;
 					}
 				}
